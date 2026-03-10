@@ -23,28 +23,28 @@ class OptionalIntTest:
 
   /** Task 5: do test for map **/
 
-  @Test def mapShouldIncrementValue(): Unit =
+  @Test def mapShouldApplyFunction(): Unit =
     val nonEmpty = OptionalInt.Just(5)
-    val f: (Int => Int) = _ + 1
-    assertEquals(OptionalInt.Just(6), OptionalInt.map(nonEmpty)(f))
+    val function: Int => Int = _ + 1
+    assertEquals(OptionalInt.Just(6), OptionalInt.map(nonEmpty)(function))
 
   @Test def mapShouldReturnDefaultWhenEmpty(): Unit =
     val empty = OptionalInt.Empty()
-    val f: (Int => Int) = _ + 1
-    assertEquals(OptionalInt.Empty(), OptionalInt.map(empty)(f))
+    val function: Int => Int = _ + 1
+    assertEquals(OptionalInt.Empty(), OptionalInt.map(empty)(function))
 
   @Test def filterShouldReturnValueWhenPredicateTrue(): Unit =
     val nonEmpty = OptionalInt.Just(5)
-    val f: (Int => Boolean) = _ > 2
-    assertEquals(nonEmpty, OptionalInt.filter(nonEmpty)(f))
+    val function: Int => Boolean = _ > 2
+    assertEquals(nonEmpty, OptionalInt.filter(nonEmpty)(function))
 
 
   @Test def filterShouldReturnEmptyWhenPredicateFalse(): Unit =
     val nonEmpty = OptionalInt.Just(1)
-    val f: (Int => Boolean) = _ > 2
-    assertEquals(OptionalInt.Empty(), OptionalInt.filter(nonEmpty)(f))
+    val function: Int => Boolean = _ > 2
+    assertEquals(OptionalInt.Empty(), OptionalInt.filter(nonEmpty)(function))
 
   @Test def filterShouldReturnEmptyWhenValueIsEmpty(): Unit =
     val empty = OptionalInt.Empty()
-    val f: (Int => Boolean) = _ > 2
-    assertEquals(OptionalInt.Empty(), OptionalInt.filter(empty)(f))
+    val function: Int => Boolean = _ > 2
+    assertEquals(OptionalInt.Empty(), OptionalInt.filter(empty)(function))
