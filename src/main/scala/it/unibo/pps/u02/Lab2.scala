@@ -6,11 +6,11 @@ object Lab2 extends App:
   // 3a)
   def positiveMethod(x: Int): String = x match
     case x if x >= 0 => "positive"
-    case _           => "negative"
+    case _ => "negative"
 
-  val positiveLambda: Int => String = _ match
+  val positiveLambda: Int => String =
     case x if x >= 0 => "positive"
-    case _           => "negative"
+    case _ => "negative"
 
   // 3b)
   val empty: String => Boolean = _ == ""
@@ -19,9 +19,9 @@ object Lab2 extends App:
 
   println(positiveMethod(10) == "positive")
   println(positiveLambda(-5) == "negative")
-  println(notEmpty("foo") == true)
-  println(notEmpty("") == false)
-  println((notEmpty("foo") && !notEmpty("")) == true)
+  println(notEmpty("foo"))
+  println(!notEmpty(""))
+  println((notEmpty("foo") && !notEmpty("")))
 
   // 4)
   val p1: Int => Int => Int => Boolean = x => y => z => x <= y && y == z
